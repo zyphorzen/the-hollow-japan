@@ -1,41 +1,31 @@
-# The Hollow Japan — GDD v0.9.0
+# The Hollow Japan — GDD v0.10.0
 
 > Beyond the living world, something waits.
 
 ## Dokumentasi
 
-- [Step 0.1 — Game Identity](gdd/01-game-identity.md) — Finalized
-- [Step 0.2 — Lore And Story](gdd/02-lore-and-story.md) — Finalized
-- [Step 0.3 — World Building](gdd/03-world-building.md) — Finalized
+- [01 / Game Identity & Vision](gdd/01-game-identity.md) — Finalized
+- [02 / Lore & Storyline](gdd/02-lore-and-story.md) — Finalized
+- [03 / World geography](gdd/03-world-building.md) — Finalized
 - [Step 0.4 — Core Gameplay Loop](gdd/04-core-gameplay-loop.md) — Finalized
 - [Step 0.5 — Player & Character System](gdd/05-player-character-system.md) — Finalized
 - [Step 0.6 — Hybrid Combat System](gdd/06-hybrid-combat-system.md) — Finalized
 - [Step 0.7 — Progression & Skill System](gdd/07-progression-skill-system.md) — Finalized
 - [Step 0.8 — Inventory, Crafting & Economy](gdd/08-inventory-crafting-economy.md) — Finalized
+- [Step 0.9 — NPC & Quest System](gdd/09-npc-quest-system.md) — Finalized
+- [Step 0.10 — Multiplayer Design](gdd/10-multiplayer-design.md) — Draft
 
-## 04 / Development governance
+## Remaining Phase 0
 
-### Sisa Phase 0
+- 0.11 Art Direction & Audio
+- 0.12 Technical Architecture
+- 0.13 MVP & Development Scope
 
-0.9 NPC & Quest System
-0.10 Multiplayer Design
-0.11 Art Direction & Audio
-0.12 Technical Architecture
-0.13 MVP & Development Scope
-
-### Git checkpoint
-
-Simpan dokumen kumulatif ini pada docs/ dan pertahankan riwayat versi. Dokumen Markdown terpisah dapat tetap digunakan sebagai sumber teknis repository.
+## Git checkpoint
 
 ```bash
 git add docs/
-git commit -m "docs(gdd): finalize progression and define inventory crafting economy"
+git commit -m "docs(gdd): finalize npc quests and define multiplayer architecture"
 ```
 
-### Catatan keputusan dan batasan
-
-Step 0.1 dan 0.2 telah disetujui. Step 0.3 telah disetujui sebagai baseline desain. Step 0.4 telah disetujui. Step 0.5 dan 0.6 telah disetujui. Step 0.7 telah disetujui. Step 0.8 masih draft. Parameter teknis dan balancing tetap dapat direvisi berdasarkan pengujian. Nama game belum diperiksa ketersediaan mereknya. Belum ada kode engine atau benchmark. Dokumen ini mengonsolidasikan isi desain dalam format statis; simulasi interaktif dan gambar referensi percakapan tidak disertakan.
-
-Setiap tahap berikutnya menyertakan dokumentasi Markdown (.md) yang diperbarui secara kumulatif dan Git checkpoint.
-
-- [Step 0.9 — NPC & Quest System](gdd/09-npc-quest-system.md) — Draft
+Design only; no implementation or benchmark yet.
