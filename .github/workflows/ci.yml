@@ -56,6 +56,9 @@ jobs:
         if: runner.os == 'Linux'
         shell: bash
         run: |
+          sudo rm -f /etc/apt/sources.list.d/microsoft-prod.list
+          sudo rm -f /etc/apt/sources.list.d/microsoft-prod.sources
+
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
             gcc-14 g++-14 clang-18 ninja-build pkg-config \
