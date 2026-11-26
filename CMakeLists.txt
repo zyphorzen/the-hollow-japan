@@ -1,4 +1,3 @@
-
 cmake_minimum_required(VERSION 3.28)
 
 project(
@@ -18,9 +17,17 @@ find_package(SDL3 CONFIG REQUIRED)
 
 add_executable(thj_client
     src/client/main.cpp
+    src/application/Application.cpp
+    src/platform/SdlContext.cpp
 )
 
-target_compile_features(thj_client PRIVATE cxx_std_23)
+target_include_directories(thj_client PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/src"
+)
+
+target_compile_features(thj_client PRIVATE
+    cxx_std_23
+)
 
 target_link_libraries(thj_client PRIVATE
     SDL3::SDL3
