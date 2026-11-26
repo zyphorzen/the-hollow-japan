@@ -1,6 +1,5 @@
 #include "application/Application.hpp"
 
-#include <iostream>
 #include <stdexcept>
 #include <string>
 
@@ -23,7 +22,7 @@ void Application::RendererDeleter::operator()(SDL_Renderer *renderer) const noex
     SDL_DestroyRenderer(renderer);
 }
 
-Application::Application() {
+Application::Application(core::Logger &logger) : logger_(logger) {
     window_.reset(SDL_CreateWindow(kWindowTitle, kWindowWidth, kWindowHeight,
                                    SDL_WINDOW_RESIZABLE | SDL_WINDOW_HIGH_PIXEL_DENSITY));
 
@@ -40,35 +39,32 @@ Application::Application() {
     vsyncEnabled_ = SDL_SetRenderVSync(renderer_.get(), 1);
 
     if (!vsyncEnabled_) {
-        std::cerr << "[WARN] VSync unavailable: " << SDL_GetError() << '\n';
+        logger_.get().warn("VSync unavailable: {}", SDL_GetError());
     }
 
     const char *videoDriver = SDL_GetCurrentVideoDriver();
-
     const char *rendererName = SDL_GetRendererName(renderer_.get());
 
-    std::cout << "[INFO] The Hollow Japan initialized\n"
-              << "[INFO] Video driver: " << (videoDriver ? videoDriver : "unknown") << '\n'
-              << "[INFO] Renderer: " << (rendererName ? rendererName : "unknown") << '\n'
-              << "[INFO] VSync: " << (vsyncEnabled_ ? "enabled" : "disabled") << '\n';
+    logger_.get().info("The Hollow Japan initialized");
+    logger_.get().info("Video driver: {}", videoDriver ? videoDriver : "unknown");
+    logger_.get().info("Renderer: {}", rendererName ? rendererName : "unknown");
+    logger_.get().info("VSync: {}", vsyncEnabled_ ? "enabled" : "disabled");
 }
 
 int Application::run() {
     while (running_) {
         processEvents();
-
         if (!running_) {
             break;
         }
 
         render();
-
         if (!vsyncEnabled_) {
             SDL_Delay(16);
         }
     }
 
-    std::cout << "[INFO] Application shutting down\n";
+    logger_.get().info("Application shutting down");
 
     return 0;
 }
@@ -90,8 +86,7 @@ void Application::processEvents() {
             break;
 
         case SDL_EVENT_WINDOW_RESIZED:
-            std::cout << "[INFO] Window resized: " << event.window.data1 << "x"
-                      << event.window.data2 << '\n';
+            logger_.get().debug("Window resized: {}x{}", event.window.data1, event.window.data2);
             break;
 
         default:

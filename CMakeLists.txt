@@ -14,11 +14,13 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 find_package(SDL3 CONFIG REQUIRED)
+find_package(spdlog CONFIG REQUIRED)
 
 add_executable(thj_client
     src/client/main.cpp
     src/application/Application.cpp
     src/platform/SdlContext.cpp
+    src/core/logging/Logger.cpp
 )
 
 target_include_directories(thj_client PRIVATE
@@ -31,6 +33,7 @@ target_compile_features(thj_client PRIVATE
 
 target_link_libraries(thj_client PRIVATE
     SDL3::SDL3
+    spdlog::spdlog
 )
 
 if(MSVC)

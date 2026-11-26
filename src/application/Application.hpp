@@ -1,16 +1,15 @@
 #pragma once
 
+#include "core/logging/Logger.hpp"
 #include "platform/SdlContext.hpp"
-
 #include <SDL3/SDL.h>
-
 #include <memory>
 
 namespace thj::application {
 
 class Application final {
   public:
-    Application();
+    explicit Application(core::Logger &logger);
     ~Application() = default;
 
     Application(const Application &) = delete;
@@ -36,6 +35,8 @@ class Application final {
 
     void processEvents();
     void render();
+
+    core::Logger &logger_;
 
     platform::SdlContext sdlContext_;
     WindowPtr window_;
