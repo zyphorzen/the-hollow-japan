@@ -61,7 +61,7 @@ jobs:
             gcc-14 g++-14 clang-18 ninja-build pkg-config \
             autoconf autoconf-archive automake libtool gperf \
             bison flex gettext nasm python3-pip python3-venv \
-            curl zip unzip tar \
+            curl zip unzip tar libltdl-dev \
             libwayland-dev wayland-protocols libxkbcommon-dev \
             libx11-dev libxext-dev libxft-dev libxrandr-dev \
             libxcursor-dev libxi-dev libxfixes-dev libxss-dev \
