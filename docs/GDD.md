@@ -1,4 +1,4 @@
-# The Hollow Japan — GDD v0.11.0
+# The Hollow Japan — GDD v0.12.0
 
 > Beyond the living world, something waits.
 
@@ -14,18 +14,18 @@
 - [Step 0.8 — Inventory, Crafting & Economy](gdd/08-inventory-crafting-economy.md) — Finalized
 - [Step 0.9 — NPC & Quest System](gdd/09-npc-quest-system.md) — Finalized
 - [Step 0.10 — Multiplayer Design](gdd/10-multiplayer-design.md) — Finalized
-- [Step 0.11 — Art Direction & Audio](gdd/11-art-direction-audio.md) — Draft
+- [Step 0.11 — Art Direction & Audio](gdd/11-art-direction-audio.md) — Finalized
+- [Step 0.12 — Technical Architecture](gdd/12-technical-architecture.md) — Draft
 
 ## Remaining Phase 0
 
-- 0.12 Technical Architecture
 - 0.13 MVP & Development Scope
 
 ## Git checkpoint
 
 ```bash
 git add docs/
-git commit -m "docs(gdd): finalize multiplayer and define art direction audio"
+git commit -m "docs(gdd): finalize art direction and define technical architecture"
 ```
 
 Design only; no implementation or benchmark yet.
