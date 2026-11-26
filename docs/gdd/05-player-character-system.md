@@ -10,14 +10,14 @@ The Hollow Wanderer is a customizable, classless character. Eight-direction move
 
 Name 3–24 characters (Unicode-aware validation); 2 body variants, 6 skin tones, 8 hairstyles, 8 hair colors, 6 eye colors, 6 outfits as content targets. Facial details and voices are deferred. MVP uses one body, two hair styles and a small palette. Origin, appearance and allocated points are validated by authority before creation. Stable character UUID is independent of display name.
 
-| Origin | Bonus | Starting technique |
-|---|---|---|
-| Fallen Samurai | STR +2, VIT +1 | Basic Swordsmanship |
-| Wandering Shinobi | DEX +2, AGI +1 | Silent Step |
-| Shrine Disciple | SPI +2, WIL +1 | Spirit Pulse |
-| Village Hunter | DEX +2, VIT +1 | Focused Shot |
-| Merchant's Child | WIL +2, DEX +1 | Appraisal |
-| Orphan Wanderer | VIT +1, AGI +1, WIL +1 | Survival Instinct |
+| Origin            | Bonus                  | Starting technique  |
+| ----------------- | ---------------------- | ------------------- |
+| Fallen Samurai    | STR +2, VIT +1         | Basic Swordsmanship |
+| Wandering Shinobi | DEX +2, AGI +1         | Silent Step         |
+| Shrine Disciple   | SPI +2, WIL +1         | Spirit Pulse        |
+| Village Hunter    | DEX +2, VIT +1         | Focused Shot        |
+| Merchant's Child  | WIL +2, DEX +1         | Appraisal           |
+| Orphan Wanderer   | VIT +1, AGI +1, WIL +1 | Survival Instinct   |
 
 Origin also changes introductory dialogue and starter equipment. All techniques remain learnable by any origin.
 
@@ -25,16 +25,16 @@ Origin also changes introductory dialogue and starter equipment. All techniques 
 
 STR strength; DEX dexterity; VIT vitality; AGI agility; SPI spirit; WIL willpower. Starting value 5 each, origin bonus 3 total, free allocation 5, 3 points per level above 1, base attribute cap 60. Initial total 38; level 50 total 185 if all points spent. Attribute respec is deferred to Step 0.7.
 
-| Derived stat | Baseline formula |
-|---|---|
-| Max HP | 100 + VIT × 12 |
-| Max stamina | 50 + AGI × 6 |
-| Max spirit energy | 40 + SPI × 8 |
-| Physical attack | 10 + STR × 2 |
-| Spiritual attack | 10 + SPI × 2.5 |
-| Physical defense | 5 + VIT × 1.5 |
-| Critical chance | 5% + DEX × 0.4 percentage points |
-| Max posture | 40 + WIL × 5 |
+| Derived stat          | Baseline formula                      |
+| --------------------- | ------------------------------------- |
+| Max HP                | 100 + VIT × 12                        |
+| Max stamina           | 50 + AGI × 6                          |
+| Max spirit energy     | 40 + SPI × 8                          |
+| Physical attack       | 10 + STR × 2                          |
+| Spiritual attack      | 10 + SPI × 2.5                        |
+| Physical defense      | 5 + VIT × 1.5                         |
+| Critical chance       | 5% + DEX × 0.4 percentage points      |
+| Max posture           | 40 + WIL × 5                          |
 | Corruption resistance | min(40%, WIL × 0.5 percentage points) |
 
 Derived stat = (base + attribute contribution + sum(flat modifiers)) × (1 + sum(additive percentage modifiers)) × product(multipliers); apply stat-specific clamps last. Recalculate on dirty state, not every frame. Clamp current resources to new maxima; equipment swapping never grants free healing. Critical chance capped at 75% provisionally. Corruption resistance applies to new exposure only, not existing corruption. Damage formulas are deferred to Step 0.6.

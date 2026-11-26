@@ -1,18 +1,18 @@
 ## 01 / Game Identity & Vision
 
-| Parameter | Keputusan |
-| --- | --- |
-| Judul / codename | The Hollow Japan / THJ |
-| Genre / tema | Open World Action RPG / Japanese Fantasy |
-| Setting / atmosfer | Feudal Japan Fantasy / Mixed Fantasy |
-| Perspektif / tile | Top-down 2D / 16 × 16 px |
-| Karakter / class | Custom Character / Classless |
-| Cerita / combat | Branching / Real-time + Tactical Pause |
-| Dunia | Handcrafted + Procedural |
-| Mode | Offline singleplayer; online co-op 2–4 |
-| Difficulty | Challenging |
-| Platform | Linux dan Windows |
-| Teknologi | C++, SDL3; C++23 dan CMake diusulkan |
+| Parameter          | Keputusan                                |
+| ------------------ | ---------------------------------------- |
+| Judul / codename   | The Hollow Japan / THJ                   |
+| Genre / tema       | Open World Action RPG / Japanese Fantasy |
+| Setting / atmosfer | Feudal Japan Fantasy / Mixed Fantasy     |
+| Perspektif / tile  | Top-down 2D / 16 × 16 px                 |
+| Karakter / class   | Custom Character / Classless             |
+| Cerita / combat    | Branching / Real-time + Tactical Pause   |
+| Dunia              | Handcrafted + Procedural                 |
+| Mode               | Offline singleplayer; online co-op 2–4   |
+| Difficulty         | Challenging                              |
+| Platform           | Linux dan Windows                        |
+| Teknologi          | C++, SDL3; C++23 dan CMake diusulkan     |
 
 ### Visi
 

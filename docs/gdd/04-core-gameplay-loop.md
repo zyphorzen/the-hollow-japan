@@ -6,14 +6,14 @@ Version: 0.4.0 | Status: Finalized — approved
 
 Exploration-driven RPG with consequential progression. Design principles: freedom, risk/reward, meaningful progression, consequences. Explore → encounter → overcome (combat, dialogue, puzzle, stealth or retreat) → acquire reward → improve → prepare → explore. Rewards unlock opportunities rather than forcing repetitive combat.
 
-| Loop | Target duration | Activity |
-|---|---|---|
-| Micro | 5–30 sec | Movement, attack, dodge, interaction |
-| Encounter | 1–5 min | Combat, puzzle, gathering |
-| Adventure | 10–30 min | Quest, dungeon, discovery |
-| Session | 30–90 min | Upgrade, reputation, progression |
-| Long-term | Multiple sessions | Story and world changes |
-| Endgame | Ongoing | Mastery, challenges, exploration |
+| Loop      | Target duration   | Activity                             |
+| --------- | ----------------- | ------------------------------------ |
+| Micro     | 5–30 sec          | Movement, attack, dodge, interaction |
+| Encounter | 1–5 min           | Combat, puzzle, gathering            |
+| Adventure | 10–30 min         | Quest, dungeon, discovery            |
+| Session   | 30–90 min         | Upgrade, reputation, progression     |
+| Long-term | Multiple sessions | Story and world changes              |
+| Endgame   | Ongoing           | Mastery, challenges, exploration     |
 
 ## 2. Exploration
 

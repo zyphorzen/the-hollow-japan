@@ -2,44 +2,44 @@
 
 ### Tiga dimensi
 
-| Realm | Peran |
-| --- | --- |
-| Utsushiyo | Mortal Realm: dunia manusia |
-| Kakureyo | Spirit Realm: yōkai, leluhur dan roh kuno |
+| Realm        | Peran                                          |
+| ------------ | ---------------------------------------------- |
+| Utsushiyo    | Mortal Realm: dunia manusia                    |
+| Kakureyo     | Spirit Realm: yōkai, leluhur dan roh kuno      |
 | Takamagahara | Celestial Realm: dewa dan penjaga keseimbangan |
 
 ### Sejarah dunia
 
-| Era | Peristiwa |
-| --- | --- |
-| Age of Harmony | Manusia, roh dan dewa hidup seimbang. |
-| Age of Clans | Kerajaan berkembang; kekuatan spiritual dimanfaatkan. |
-| Forbidden Ritual | Ritual terlarang merusak segel antardimensi. |
-| Great Hollowing | Dimensi bertumpang tindih; desa hilang dan korupsi menyebar. |
-| Age of Hollow | Dua puluh tahun kemudian, petualangan dimulai. |
+| Era              | Peristiwa                                                    |
+| ---------------- | ------------------------------------------------------------ |
+| Age of Harmony   | Manusia, roh dan dewa hidup seimbang.                        |
+| Age of Clans     | Kerajaan berkembang; kekuatan spiritual dimanfaatkan.        |
+| Forbidden Ritual | Ritual terlarang merusak segel antardimensi.                 |
+| Great Hollowing  | Dimensi bertumpang tindih; desa hilang dan korupsi menyebar. |
+| Age of Hollow    | Dua puluh tahun kemudian, petualangan dimulai.               |
 
 ### The Hollow Wanderer
 
 Karakter buatan pemain dengan nama, penampilan, gender dan origin yang dapat dipilih. Hollow Mark memungkinkan Realm Traversal, dengan risiko Hollow Corruption. Background memberi bonus awal dan dialog, bukan batas class.
 
-| Background | Keunggulan awal |
-| --- | --- |
-| Fallen Samurai | Swordsmanship |
-| Wandering Shinobi | Stealth |
-| Shrine Disciple | Spiritual Arts |
-| Village Hunter | Archery |
-| Merchant’s Child | Trading |
-| Orphan Wanderer | Survival |
+| Background        | Keunggulan awal |
+| ----------------- | --------------- |
+| Fallen Samurai    | Swordsmanship   |
+| Wandering Shinobi | Stealth         |
+| Shrine Disciple   | Spiritual Arts  |
+| Village Hunter    | Archery         |
+| Merchant’s Child  | Trading         |
+| Orphan Wanderer   | Survival        |
 
 ## 02 / Faction dan konflik
 
-| Faction | Ideologi dan tujuan |
-| --- | --- |
+| Faction           | Ideologi dan tujuan                                                      |
+| ----------------- | ------------------------------------------------------------------------ |
 | Crimson Shogunate | Ketertiban militer; menutup gerbang dan menghancurkan ancaman spiritual. |
-| Moonveil Order | Mengembalikan keseimbangan manusia dan roh. |
-| Shadow Lotus | Memanfaatkan kekuatan Hollow untuk tatanan baru. |
-| Wandering Blades | Aliansi independen pengembara, pedagang dan pemburu. |
-| Hollow Covenant | Penyatuan dimensi sebagai evolusi berikutnya. |
+| Moonveil Order    | Mengembalikan keseimbangan manusia dan roh.                              |
+| Shadow Lotus      | Memanfaatkan kekuatan Hollow untuk tatanan baru.                         |
+| Wandering Blades  | Aliansi independen pengembara, pedagang dan pemburu.                     |
+| Hollow Covenant   | Penyatuan dimensi sebagai evolusi berikutnya.                            |
 
 ### The Hollow Sovereign
 
@@ -47,17 +47,17 @@ Mantan penjaga gerbang spiritual yang kehilangan identitas dan ingatan setelah b
 
 ### Main storyline
 
-| Chapter | Tujuan |
-| --- | --- |
-| Prologue — The Awakening | Menemukan Hollow Mark |
-| I — Whispers of the Dead | Menyelidiki gangguan spiritual |
-| II — Land of Broken Shrines | Menemukan segel kuno |
-| III — War of the Clans | Menghadapi konflik faction |
-| IV — Beyond the Veil | Menjelajahi dunia roh |
-| V — The Forgotten Truth | Mengungkap penyebab bencana |
-| VI — Eclipse of the Realms | Menghadapi penyatuan dunia |
-| VII — The Hollow Sovereign | Menentukan nasib dunia |
-| Epilogue — A World Reborn | Mengalami konsekuensi pilihan |
+| Chapter                     | Tujuan                         |
+| --------------------------- | ------------------------------ |
+| Prologue — The Awakening    | Menemukan Hollow Mark          |
+| I — Whispers of the Dead    | Menyelidiki gangguan spiritual |
+| II — Land of Broken Shrines | Menemukan segel kuno           |
+| III — War of the Clans      | Menghadapi konflik faction     |
+| IV — Beyond the Veil        | Menjelajahi dunia roh          |
+| V — The Forgotten Truth     | Mengungkap penyebab bencana    |
+| VI — Eclipse of the Realms  | Menghadapi penyatuan dunia     |
+| VII — The Hollow Sovereign  | Menentukan nasib dunia         |
+| Epilogue — A World Reborn   | Mengalami konsekuensi pilihan  |
 
 ## 02 / Narrative mechanics
 
@@ -67,13 +67,13 @@ Karakter terbangun di Forgotten Shrine saat hujan, dengan ingatan beberapa hari 
 
 ### Ending dan konsekuensi
 
-| Ending | Hasil |
-| --- | --- |
-| Separation | Dimensi dipisahkan kembali. |
-| Harmony | Manusia dan roh hidup berdampingan. |
-| Ascension | Dimensi menyatu menjadi realitas baru. |
-| Oblivion | Korupsi mengambil alih dunia. |
-| Hidden Ending | Syarat rahasia; belum dirinci. |
+| Ending        | Hasil                                  |
+| ------------- | -------------------------------------- |
+| Separation    | Dimensi dipisahkan kembali.            |
+| Harmony       | Manusia dan roh hidup berdampingan.    |
+| Ascension     | Dimensi menyatu menjadi realitas baru. |
+| Oblivion      | Korupsi mengambil alih dunia.          |
+| Hidden Ending | Syarat rahasia; belum dirinci.         |
 
 Post-game exploration tetap tersedia. Ending dipengaruhi keputusan, reputasi dan korupsi, bukan semata faction.
 
