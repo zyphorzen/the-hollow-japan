@@ -1,4 +1,4 @@
-# The Hollow Japan — GDD v0.5.0
+# The Hollow Japan — GDD v0.6.0
 
 > Beyond the living world, something waits.
 
@@ -8,13 +8,13 @@
 - [Step 0.2 — Lore And Story](gdd/02-lore-and-story.md) — Finalized
 - [Step 0.3 — World Building](gdd/03-world-building.md) — Finalized
 - [Step 0.4 — Core Gameplay Loop](gdd/04-core-gameplay-loop.md) — Finalized
-- [Step 0.5 — Player & Character System](gdd/05-player-character-system.md) — Draft
+- [Step 0.5 — Player & Character System](gdd/05-player-character-system.md) — Finalized
+- [Step 0.6 — Hybrid Combat System](gdd/06-hybrid-combat-system.md) — Draft
 
 ## 04 / Development governance
 
 ### Sisa Phase 0
 
-0.6 Hybrid Combat System
 0.7 Progression & Skill System
 0.8 Inventory, Crafting & Economy
 0.9 NPC & Quest System
@@ -29,7 +29,7 @@ Simpan dokumen kumulatif ini pada docs/ dan pertahankan riwayat versi. Dokumen M
 
 ```bash
 git add docs/
-git commit -m "docs(gdd): finalize gameplay loop and define player character system"
+git commit -m "docs(gdd): finalize character system and define hybrid combat"
 ```
 
 ### Catatan keputusan dan batasan
