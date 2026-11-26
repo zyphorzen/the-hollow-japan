@@ -1,4 +1,4 @@
-# The Hollow Japan — GDD v0.13.0
+# The Hollow Japan — GDD v1.0.0
 
 > Beyond the living world, something waits.
 
@@ -16,18 +16,21 @@
 - [Step 0.10 — Multiplayer Design](gdd/10-multiplayer-design.md) — Finalized
 - [Step 0.11 — Art Direction & Audio](gdd/11-art-direction-audio.md) — Finalized
 - [Step 0.12 — Technical Architecture](gdd/12-technical-architecture.md) — Finalized
+- [Step 0.13 — MVP & Development Scope](gdd/13-mvp-development-scope.md) — Finalized
 
-- [Step 0.13 — MVP & Development Scope](gdd/13-mvp-development-scope.md) — Draft
+## Approved baseline
 
-## Remaining Phase 0
+All 13 chapters approved on 2026-11-26. Step 0.13 governs delivery scope. Singleplayer MVP first, LAN alpha next, online co-op thereafter. Numerical balancing, dependency pins, effort and performance targets remain subject to validation. Historical chapter versions identify their original design revisions. No engine implementation or benchmark is claimed.
 
-- Approve Step 0.13 and publish GDD v1.0.0.
+## Implementation
+
+- [Step 1.1 — Development Environment Verification](development/01-foundation/01-environment-verification.md) — Pending local verification.
 
 ## Git checkpoint
 
 ```bash
 git add README.md docs/
-git commit -m "docs(gdd): finalize technical architecture and define mvp roadmap"
+git diff --cached --stat
+git commit -m "docs(gdd): approve pre-production baseline v1.0.0"
+git tag -a gdd-v1.0.0 -m "Approved Game Design Document"
 ```
-
-Design only; no implementation or benchmark yet.
