@@ -13,38 +13,58 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+option(THJ_BUILD_TESTS "Build automated tests" ON)
+
+function(thj_enable_warnings target)
+    if(MSVC)
+        target_compile_options(${target} PRIVATE
+            /W4
+            /permissive-
+        )
+    else()
+        target_compile_options(${target} PRIVATE
+            -Wall
+            -Wextra
+            -Wpedantic
+        )
+    endif()
+endfunction()
+
 find_package(SDL3 CONFIG REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
+
+add_library(thj_core STATIC
+    src/core/logging/Logger.cpp
+)
+
+target_include_directories(thj_core PUBLIC
+    "${CMAKE_CURRENT_SOURCE_DIR}/src"
+)
+
+target_compile_features(thj_core PUBLIC
+    cxx_std_23
+)
+
+target_link_libraries(thj_core PUBLIC
+    spdlog::spdlog
+)
+
+thj_enable_warnings(thj_core)
 
 add_executable(thj_client
     src/client/main.cpp
     src/application/Application.cpp
     src/platform/SdlContext.cpp
-    src/core/logging/Logger.cpp
-)
-
-target_include_directories(thj_client PRIVATE
-    "${CMAKE_CURRENT_SOURCE_DIR}/src"
-)
-
-target_compile_features(thj_client PRIVATE
-    cxx_std_23
 )
 
 target_link_libraries(thj_client PRIVATE
+    thj_core
     SDL3::SDL3
-    spdlog::spdlog
 )
 
-if(MSVC)
-    target_compile_options(thj_client PRIVATE
-        /W4
-        /permissive-
-    )
-else()
-    target_compile_options(thj_client PRIVATE
-        -Wall
-        -Wextra
-        -Wpedantic
-    )
+thj_enable_warnings(thj_client)
+
+if(THJ_BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(tests)
 endif()

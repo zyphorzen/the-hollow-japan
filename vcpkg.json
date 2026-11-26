@@ -2,5 +2,5 @@
   "name": "the-hollow-japan",
   "version-string": "0.1.0",
   "builtin-baseline": "e6d62cc9ce8f8d9687df14521118f2ec3c10ee6a",
-  "dependencies": ["sdl3", "spdlog"]
+  "dependencies": ["sdl3", "spdlog", "catch2"]
 }
