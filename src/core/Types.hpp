@@ -14,6 +14,7 @@ struct EntityHandle {
     u32 generation{};
 
     [[nodiscard]] constexpr bool valid() const noexcept { return generation != 0; }
+
     [[nodiscard]] constexpr u64 packed() const noexcept {
         return (static_cast<u64>(generation) << 32) | index;
     }

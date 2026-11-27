@@ -11,6 +11,8 @@ add_executable(thj_tests
 
     unit/core/time/SimulationTimeTests.cpp
     unit/core/time/FixedTimestepTests.cpp
+
+    unit/ecs/EntityManagerTests.cpp
 )
 
 target_link_libraries(thj_tests PRIVATE
