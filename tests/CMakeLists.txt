@@ -2,10 +2,15 @@ find_package(Catch2 3 CONFIG REQUIRED)
 
 add_executable(thj_tests
     unit/core/logging/LoggerTests.cpp
+
     unit/core/TypesTests.cpp
+
     unit/core/math/FixedPointTests.cpp
+
     unit/core/world/CoordinatesTests.cpp
+
     unit/core/time/SimulationTimeTests.cpp
+    unit/core/time/FixedTimestepTests.cpp
 )
 
 target_link_libraries(thj_tests PRIVATE
