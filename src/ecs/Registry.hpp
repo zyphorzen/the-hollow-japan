@@ -3,11 +3,17 @@
 
 #include "ecs/ComponentPool.hpp"
 #include "ecs/EntityManager.hpp"
+#include "ecs/QueryTraits.hpp"
 
+#include <algorithm>
+#include <array>
 #include <concepts>
 #include <cstddef>
+#include <functional>
 #include <memory>
+#include <span>
 #include <stdexcept>
+#include <tuple>
 #include <typeindex>
 #include <unordered_map>
 #include <utility>
@@ -28,7 +34,7 @@ class Registry final {
 
     [[nodiscard]] EntityHandle create();
 
-    bool destroy(EntityHandle entity) noexcept;
+    bool destroy(EntityHandle entity);
 
     [[nodiscard]] bool isAlive(EntityHandle entity) const noexcept;
 
@@ -40,6 +46,8 @@ class Registry final {
 
     [[nodiscard]] std::size_t poolCount() const noexcept;
 
+    [[nodiscard]] bool isIterating() const noexcept;
+
     template <ComponentType T> [[nodiscard]] std::size_t componentCount() const {
         const auto *pool = findPool<T>();
 
@@ -49,6 +57,7 @@ class Registry final {
     template <ComponentType T, typename... Args>
         requires std::constructible_from<T, Args...>
     T &emplace(EntityHandle entity, Args &&...args) {
+        requireStructuralMutationAllowed();
         requireAlive(entity);
 
         auto &pool = assurePool<T>();
@@ -115,6 +124,8 @@ class Registry final {
     }
 
     template <ComponentType T> bool remove(EntityHandle entity) {
+        requireStructuralMutationAllowed();
+
         if (!isAlive(entity)) {
             return false;
         }
@@ -129,11 +140,144 @@ class Registry final {
     }
 
     template <ComponentType T> void reserveComponents(std::size_t capacity) {
+        requireStructuralMutationAllowed();
+
         assurePool<T>().storage().reserve(capacity);
     }
 
+    template <typename... Ts, typename Fn>
+        requires QueryComponents<Ts...> && std::invocable<Fn &, EntityHandle, Ts &...>
+    std::size_t each(Fn &&callback) {
+        return executeQuery<Ts...>(*this, callback, false);
+    }
+
+    template <typename... Ts, typename Fn>
+        requires QueryComponents<Ts...> && std::invocable<Fn &, EntityHandle, const Ts &...>
+    std::size_t each(Fn &&callback) const {
+        return executeQuery<Ts...>(*this, callback, false);
+    }
+
+    template <typename... Ts, typename Fn>
+        requires QueryComponents<Ts...> && std::invocable<Fn &, EntityHandle, Ts &...>
+    std::size_t eachOrdered(Fn &&callback) {
+        return executeQuery<Ts...>(*this, callback, true);
+    }
+
+    template <typename... Ts, typename Fn>
+        requires QueryComponents<Ts...> && std::invocable<Fn &, EntityHandle, const Ts &...>
+    std::size_t eachOrdered(Fn &&callback) const {
+        return executeQuery<Ts...>(*this, callback, true);
+    }
+
   private:
+    class IterationGuard final {
+      public:
+        explicit IterationGuard(const Registry &registry) noexcept : registry_(registry) {
+            ++registry_.iterationDepth_;
+        }
+
+        ~IterationGuard() noexcept { --registry_.iterationDepth_; }
+
+        IterationGuard(const IterationGuard &) = delete;
+
+        IterationGuard &operator=(const IterationGuard &) = delete;
+
+        IterationGuard(IterationGuard &&) = delete;
+
+        IterationGuard &operator=(IterationGuard &&) = delete;
+
+      private:
+        const Registry &registry_;
+    };
+
     void requireAlive(EntityHandle entity) const;
+
+    void requireStructuralMutationAllowed() const;
+
+    template <typename... Ts, typename RegistryType, typename Fn>
+    static std::size_t executeQuery(RegistryType &registry, Fn &callback, bool ordered) {
+
+        const auto pools = std::tuple{registry.template findPool<Ts>()...};
+
+        const bool allPoolsExist =
+            std::apply([](auto *...pool) { return ((pool != nullptr) && ...); }, pools);
+
+        if (!allPoolsExist) {
+            return 0;
+        }
+
+        const IterationGuard guard{registry};
+
+        const auto entityViews = std::apply(
+            [](auto *...pool) {
+                return std::array<std::span<const EntityHandle>, sizeof...(Ts)>{
+                    pool->storage().entities()...};
+            },
+            pools);
+
+        const auto smallest =
+            std::min_element(entityViews.begin(), entityViews.end(),
+                             [](auto lhs, auto rhs) { return lhs.size() < rhs.size(); });
+
+        const auto candidates = *smallest;
+
+        if (candidates.empty()) {
+            return 0;
+        }
+
+        std::size_t matchedCount = 0;
+
+        const auto visit = [&](EntityHandle entity) {
+            if (!registry.isAlive(entity)) {
+                return;
+            }
+
+            const auto components = std::apply(
+                [&](auto *...pool) { return std::tuple{pool->storage().tryGet(entity)...}; },
+                pools);
+
+            const bool matches = std::apply(
+                [](auto *...component) { return ((component != nullptr) && ...); }, components);
+
+            if (!matches) {
+                return;
+            }
+
+            std::apply(
+                [&](auto *...component) {
+                    std::invoke(callback, EntityHandle{entity}, (*component)...);
+                },
+                components);
+
+            ++matchedCount;
+        };
+
+        if (!ordered) {
+
+            for (const auto entity : candidates) {
+                visit(entity);
+            }
+
+            return matchedCount;
+        }
+
+        std::vector<EntityHandle> sortedCandidates(candidates.begin(), candidates.end());
+
+        std::sort(sortedCandidates.begin(), sortedCandidates.end(),
+                  [](EntityHandle lhs, EntityHandle rhs) {
+                      if (lhs.index != rhs.index) {
+                          return lhs.index < rhs.index;
+                      }
+
+                      return lhs.generation < rhs.generation;
+                  });
+
+        for (const auto entity : sortedCandidates) {
+            visit(entity);
+        }
+
+        return matchedCount;
+    }
 
     template <ComponentType T> [[nodiscard]] ComponentPool<T> *findPool() {
         const auto key = std::type_index(typeid(T));
@@ -179,7 +323,6 @@ class Registry final {
                 throw std::logic_error("Component pool already registered");
             }
         } catch (...) {
-
             pools_.pop_back();
 
             throw;
@@ -193,6 +336,8 @@ class Registry final {
     std::vector<std::unique_ptr<IComponentPool>> pools_;
 
     std::unordered_map<std::type_index, std::size_t> poolLookup_;
+
+    mutable std::size_t iterationDepth_{};
 };
 
 } // namespace thj::ecs
