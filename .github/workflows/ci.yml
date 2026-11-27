@@ -83,7 +83,7 @@ jobs:
             libxkbcommon-dev \
             libx11-dev libxext-dev libxft-dev \
             libxrandr-dev libxcursor-dev \
-            libxi-dev libxfixes-dev libxss-dev \
+            libxi-dev libxfixes-dev libxss-dev libxtst-dev \
             libgl1-mesa-dev libegl1-mesa-dev \
             libgles2-mesa-dev \
             libibus-1.0-dev \
