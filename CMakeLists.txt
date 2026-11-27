@@ -39,6 +39,7 @@ add_library(thj_core STATIC
 
     src/ecs/EntityManager.cpp
     src/ecs/SparseSet.cpp
+    src/ecs/Registry.cpp
 )
 
 target_include_directories(thj_core PUBLIC

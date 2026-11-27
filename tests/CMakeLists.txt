@@ -15,6 +15,7 @@ add_executable(thj_tests
     unit/ecs/EntityManagerTests.cpp
     unit/ecs/SparseSetTests.cpp
     unit/ecs/ComponentStorageTests.cpp
+    unit/ecs/RegistryTests.cpp
 )
 
 target_link_libraries(thj_tests PRIVATE
