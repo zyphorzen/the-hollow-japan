@@ -36,7 +36,9 @@ find_package(spdlog CONFIG REQUIRED)
 add_library(thj_core STATIC
     src/core/logging/Logger.cpp
     src/core/time/FixedTimestep.cpp
+
     src/ecs/EntityManager.cpp
+    src/ecs/SparseSet.cpp
 )
 
 target_include_directories(thj_core PUBLIC
