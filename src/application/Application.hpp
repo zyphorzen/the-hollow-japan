@@ -3,8 +3,10 @@
 #include "core/logging/Logger.hpp"
 #include "core/time/FixedTimestep.hpp"
 #include "platform/SdlContext.hpp"
+#include "simulation/SimulationWorld.hpp"
 
 #include <SDL3/SDL.h>
+
 #include <memory>
 
 namespace thj::application {
@@ -38,11 +40,13 @@ class Application final {
 
     void processEvents();
 
+    void initializeSimulationDemo();
+
     void fixedUpdate(core::SimulationTick tick);
 
     void render(double interpolationAlpha);
 
-    void logFrameTiming(const core::FrameTiming &timing);
+    void logFrameTiming(const core::FrameTiming &timing, core::Nanoseconds elapsed);
 
     void togglePause();
 
@@ -51,13 +55,18 @@ class Application final {
     platform::SdlContext sdlContext_;
 
     WindowPtr window_;
+
     RendererPtr renderer_;
 
     core::FixedTimestep timestep_;
 
+    simulation::SimulationWorld world_;
+
     bool running_{true};
     bool vsyncEnabled_{false};
     bool pauseChanged_{false};
+
+    bool snapRender_{true};
 
     core::Nanoseconds statsElapsed_{};
 

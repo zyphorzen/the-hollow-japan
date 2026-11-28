@@ -18,6 +18,10 @@ add_executable(thj_tests
     unit/ecs/RegistryTests.cpp
     unit/ecs/QueryTests.cpp
     unit/ecs/CommandBufferTests.cpp
+
+    unit/simulation/MovementSystemTests.cpp
+    unit/simulation/LifetimeSystemTests.cpp
+    unit/simulation/SimulationWorldTests.cpp
 )
 
 target_link_libraries(thj_tests PRIVATE

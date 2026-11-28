@@ -41,6 +41,10 @@ add_library(thj_core STATIC
     src/ecs/SparseSet.cpp
     src/ecs/Registry.cpp
     src/ecs/CommandBuffer.cpp
+
+    src/simulation/SimulationWorld.cpp
+    src/simulation/systems/MovementSystem.cpp
+    src/simulation/systems/LifetimeSystem.cpp
 )
 
 target_include_directories(thj_core PUBLIC
