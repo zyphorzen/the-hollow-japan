@@ -11,6 +11,12 @@ namespace thj::ecs {
 using core::EntityHandle;
 using core::u32;
 
+namespace testing {
+
+struct EntityManagerTestAccess;
+
+} // namespace testing
+
 class EntityManager final {
   public:
     EntityManager() = default;
@@ -35,6 +41,8 @@ class EntityManager final {
     void reserve(std::size_t capacity);
 
   private:
+    friend struct testing::EntityManagerTestAccess;
+
     static constexpr u32 kInvalidIndex = std::numeric_limits<u32>::max();
 
     struct EntitySlot {

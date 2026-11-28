@@ -30,6 +30,46 @@ function(thj_enable_warnings target)
     endif()
 endfunction()
 
+option(
+    THJ_ENABLE_SANITIZERS
+    "Enable AddressSanitizer and UndefinedBehaviorSanitizer"
+    OFF
+)
+
+option(
+    THJ_BUILD_BENCHMARKS
+    "Build engine performance benchmarks"
+    OFF
+)
+
+if(THJ_ENABLE_SANITIZERS)
+    if(
+        CMAKE_SYSTEM_NAME STREQUAL "Linux"
+        AND CMAKE_CXX_COMPILER_ID MATCHES "^(GNU|Clang)$"
+    )
+        add_compile_options(
+            -fsanitize=address,undefined
+            -fno-sanitize-recover=all
+            -fno-omit-frame-pointer
+            -g
+        )
+
+        add_link_options(
+            -fsanitize=address,undefined
+        )
+
+        message(
+            STATUS
+            "The Hollow Japan: ASan and UBSan enabled"
+        )
+    else()
+        message(
+            FATAL_ERROR
+            "THJ_ENABLE_SANITIZERS requires GCC or Clang on Linux"
+        )
+    endif()
+endif()
+
 find_package(SDL3 CONFIG REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
 
@@ -77,4 +117,8 @@ thj_enable_warnings(thj_client)
 if(THJ_BUILD_TESTS)
     enable_testing()
     add_subdirectory(tests)
+endif()
+
+if(THJ_BUILD_BENCHMARKS)
+    add_subdirectory(benchmarks)
 endif()

@@ -22,6 +22,14 @@ add_executable(thj_tests
     unit/simulation/MovementSystemTests.cpp
     unit/simulation/LifetimeSystemTests.cpp
     unit/simulation/SimulationWorldTests.cpp
+
+    unit/ecs/EntityGenerationTests.cpp
+    unit/ecs/EcsInvariantTests.cpp
+    unit/simulation/DeterministicReplayTests.cpp
+)
+
+target_include_directories(thj_tests PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
 target_link_libraries(thj_tests PRIVATE
