@@ -17,6 +17,7 @@ add_executable(thj_tests
     unit/ecs/ComponentStorageTests.cpp
     unit/ecs/RegistryTests.cpp
     unit/ecs/QueryTests.cpp
+    unit/ecs/CommandBufferTests.cpp
 )
 
 target_link_libraries(thj_tests PRIVATE
